@@ -1,11 +1,4 @@
-# Use official Python image
 FROM python:3.9-slim
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    libgl1-mesa-glx \
-    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
@@ -18,11 +11,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set environment variables
-ENV PYTHONPATH=/app
-ENV PORT=8000
+ENV PORT=8501
 
 # Expose the port
-EXPOSE 8000
+EXPOSE 8501
 
 # Command to run the application
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+CMD streamlit run app.py --server.port $PORT --server.address 0.0.0.0 

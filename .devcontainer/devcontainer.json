@@ -1,0 +1,18 @@
+{
+    "name": "RAG Document Research",
+    "dockerFile": "../Dockerfile",
+    "forwardPorts": [
+        8501,
+        8000
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+    ],
+    "postCreateCommand": "pip install -r backend/requirements.txt && pip install -r frontend/requirements.txt",
+    "remoteUser": "root"
+}
